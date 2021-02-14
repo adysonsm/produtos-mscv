@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mscvcurso.doamin.repositories.CategoriaRepository;
 import com.example.mscvcurso.domain.Categoria;
+import com.example.mscvcurso.repositories.CategoriaRepository;
 import com.example.mscvcurso.services.exceptions.ObjectNotFoundException;
 
 @Service
