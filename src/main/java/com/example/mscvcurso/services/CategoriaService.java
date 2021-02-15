@@ -1,5 +1,6 @@
 package com.example.mscvcurso.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class CategoriaService {
 		find(obj.getId());
 		return repo.save(obj);
 	}
-	
+
 	public void delete(Integer id) {
 		find(id);
 		try {
@@ -40,6 +41,9 @@ public class CategoriaService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DateIntegrityException("Não é possivel excluir uma categoria que possui produtos");
 		}
-	
 	}
+	public List<Categoria> findAll() {
+		return repo.findAll();
+	}
+
 }
