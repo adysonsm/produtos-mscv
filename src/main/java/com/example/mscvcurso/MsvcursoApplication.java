@@ -14,6 +14,7 @@ import com.example.mscvcurso.domain.Cidade;
 import com.example.mscvcurso.domain.Cliente;
 import com.example.mscvcurso.domain.Endereco;
 import com.example.mscvcurso.domain.Estado;
+import com.example.mscvcurso.domain.ItemPedido;
 import com.example.mscvcurso.domain.Pagamento;
 import com.example.mscvcurso.domain.PagamentoComBoleto;
 import com.example.mscvcurso.domain.PagamentoComCartao;
@@ -26,6 +27,7 @@ import com.example.mscvcurso.repositories.CidadeRepository;
 import com.example.mscvcurso.repositories.ClienteRepository;
 import com.example.mscvcurso.repositories.EnderecoRepository;
 import com.example.mscvcurso.repositories.EstadoRepository;
+import com.example.mscvcurso.repositories.ItemPedidoRepository;
 import com.example.mscvcurso.repositories.PagamentoRepository;
 import com.example.mscvcurso.repositories.PedidoRepository;
 import com.example.mscvcurso.repositories.ProdutoRepository;
@@ -49,6 +51,8 @@ public class MsvcursoApplication implements CommandLineRunner {
 	private PagamentoRepository pagamentoRepository;
 	@Autowired
 	private PedidoRepository pedidoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MsvcursoApplication.class, args);
@@ -112,6 +116,22 @@ public class MsvcursoApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(pe1,pe2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(pe1, p1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(pe1, p3, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(pe2, p2, 100.00, 1, 800.00);
+		
+		pe1.getItens().addAll(Arrays.asList(ip1, ip2));
+		pe2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2,ip3));
+		
+		
+		
 		
 
 		
