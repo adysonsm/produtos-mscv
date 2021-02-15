@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.mscvcurso.domain.Categoria;
+import com.example.mscvcurso.dto.CategoriaDTO;
 import com.example.mscvcurso.repositories.CategoriaRepository;
 import com.example.mscvcurso.services.exceptions.DateIntegrityException;
 import com.example.mscvcurso.services.exceptions.ObjectNotFoundException;
@@ -51,6 +52,10 @@ public class CategoriaService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String ordeBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page,linesPerPage,  org.springframework.data.domain.Sort.Direction.valueOf(direction),ordeBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(),objDto.getNome());
 	}
  
 }
