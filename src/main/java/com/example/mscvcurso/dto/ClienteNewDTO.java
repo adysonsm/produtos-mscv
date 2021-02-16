@@ -2,6 +2,11 @@ package com.example.mscvcurso.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 public class ClienteNewDTO implements Serializable{
 	
 	/**
@@ -9,17 +14,32 @@ public class ClienteNewDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String nome;
-	private String email;
-	private String cpfOuCnpj;
-	private Integer tipo; 
 	
+	@NotEmpty(message = "prechimento obrigatorio")
+	@Length(min = 0, max = 120)
+	private String nome;
+	
+	@NotEmpty(message = "prechimento obrigatorio")
+	@Email(message = "email inválido")
+	private String email;
+	
+	@NotEmpty(message = "prechimento obrigatorio")
+	private String cpfOuCnpj;
+	
+	private Integer tipo; 
+	@NotEmpty(message = "prechimento obrigatorio")
 	private String logadouro;
+	
+	@NotEmpty(message = "prechimento obrigatorio")
 	private String numero;
+	
 	private String complemento;
 	private String bairro;
+	
+	@NotEmpty(message = "prechimento obrigatorio")
 	private String cep;
 	
+	@NotEmpty(message = "prechimento obrigatorio")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;

@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.mscvcurso.domain.Categoria;
-import com.example.mscvcurso.domain.Cliente;
 import com.example.mscvcurso.dto.CategoriaDTO;
 import com.example.mscvcurso.repositories.CategoriaRepository;
 import com.example.mscvcurso.services.exceptions.DateIntegrityException;
